@@ -1,0 +1,287 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#10172b">
+
+    <title>Um Buquê Para Você ♡</title>
+
+    <meta name="description" content="Um pequeno presente feito com amor, especialmente para você.">
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Ícone -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%B7%3C/text%3E%3C/svg%3E">
+
+</head>
+
+<body>
+
+    <!-- Fundo e decoração -->
+    <div class="background">
+        <div class="stars" id="stars"></div>
+        <div class="moon"></div>
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <main class="main-container">
+
+        <!-- ================================= -->
+        <!-- 1. TELA INICIAL                  -->
+        <!-- ================================= -->
+
+        <section class="screen intro-screen active" id="intro">
+
+            <div class="intro-content">
+
+                <span class="eyebrow">
+                    UM PEQUENO PRESENTE
+                </span>
+
+                <h1>
+                    Para você,
+                    <span>meu amor.</span>
+                </h1>
+
+                <p class="intro-description">
+                    Existe algo que eu gostaria de te entregar,
+                    mas, por enquanto, minhas mãos só conseguem
+                    alcançar você através desta tela...
+                </p>
+
+                <button class="primary-button" id="start-button">
+                    Receber meu presente
+                    <span>♡</span>
+                </button>
+
+                <span class="intro-footer">
+                    Feito com carinho, especialmente para você.
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================= -->
+        <!-- 2. FORMAÇÃO DO BUQUÊ              -->
+        <!-- ================================= -->
+
+        <section class="screen bouquet-screen" id="bouquet-screen">
+
+            <div class="bouquet-heading">
+
+                <span class="eyebrow">
+                    FLORES PARA VOCÊ
+                </span>
+
+                <h2>
+                    Um buquê de sentimentos.
+                </h2>
+
+                <p>
+                    Cada flor carrega um pedacinho
+                    daquilo que sinto por você.
+                </p>
+
+            </div>
+
+            <!-- Área onde o buquê será construído -->
+            <div class="bouquet-container" id="bouquet">
+
+                <div class="bouquet-glow"></div>
+
+                <div class="bouquet-flowers" id="bouquet-flowers">
+                    <!-- Flores geradas pelo JavaScript -->
+                </div>
+
+                <div class="bouquet-leaves" id="bouquet-leaves">
+                    <!-- Folhagens -->
+                </div>
+
+                <div class="bouquet-stems" id="bouquet-stems">
+                    <!-- Caules -->
+                </div>
+
+                <div class="bouquet-wrapper" id="bouquet-wrapper">
+                    <!-- Papel do buquê -->
+                </div>
+
+                <div class="bouquet-ribbon" id="bouquet-ribbon">
+                    <!-- Laço -->
+                </div>
+
+            </div>
+
+            <p class="bouquet-caption" id="bouquet-caption">
+                Um pouquinho do meu amor em cada pétala.
+            </p>
+
+            <button class="primary-button hidden" id="letter-button">
+                Tenho algo para te dizer
+                <span>♡</span>
+            </button>
+
+        </section>
+
+
+        <!-- ================================= -->
+        <!-- 3. CARTA                         -->
+        <!-- ================================= -->
+
+        <section class="screen letter-screen" id="letter-screen">
+
+            <div class="letter-container">
+
+                <span class="eyebrow">
+                    UMA CARTA PARA VOCÊ
+                </span>
+
+                <div class="letter-decoration">
+                    🌷
+                </div>
+
+                <h2>
+                    Meu amor,
+                </h2>
+
+                <div class="letter-content" id="letter-content">
+
+                    <p>
+                        Se eu pudesse transformar tudo aquilo
+                        que sinto por você em flores, provavelmente
+                        ainda não existiria um buquê grande o suficiente.
+                    </p>
+
+                    <p>
+                        Então escolhi cada uma delas para representar
+                        um pedacinho do que existe dentro de mim.
+                    </p>
+
+                    <p>
+                        Que os lírios representem a admiração que
+                        sinto por você, que as rosas carreguem todo
+                        o meu carinho e que cada pequena flor lembre
+                        que até nos detalhes mais simples existe
+                        um pouco do meu amor.
+                    </p>
+
+                    <p>
+                        Esse buquê é seu, amor. E, mesmo que um dia
+                        suas flores murchem, espero que você nunca
+                        se esqueça do sentimento que fez cada uma
+                        delas florescer.
+                    </p>
+
+                    <p class="letter-ending">
+                        Com todo o meu amor,
+                        <span>para você. ♡</span>
+                    </p>
+
+                </div>
+
+                <div class="letter-divider">
+                    <span>✦</span>
+                </div>
+
+                <button class="primary-button" id="second-surprise-button">
+                    Tem mais uma surpresa...
+                    <span>♡</span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================= -->
+        <!-- 4. SEGUNDA SURPRESA              -->
+        <!-- ================================= -->
+
+        <section class="screen surprise-screen" id="surprise-screen">
+
+            <div class="surprise-content">
+
+                <span class="eyebrow">
+                    E AINDA NÃO ACABOU
+                </span>
+
+                <div class="surprise-flower">
+                    🌸
+                </div>
+
+                <h2>
+                    Mais uma coisinha,
+                    <span>meu amor.</span>
+                </h2>
+
+                <p>
+                    Achei que um buquê seria pouco para demonstrar
+                    tudo o que sinto por você, então preparei
+                    mais uma surpresa.
+                </p>
+
+                <p>
+                    Espero que goste, porque cada detalhe
+                    foi pensado com muito carinho.
+                </p>
+
+                <div class="surprise-divider">
+                    ♡
+                </div>
+
+                <span class="surprise-label">
+                    A SEGUNDA SURPRESA DO DIA
+                </span>
+
+                <a
+                    href="https://zeus1qlg.itch.io/1-ms"
+                    class="surprise-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Abrir minha segunda surpresa
+                    <span>↗</span>
+                </a>
+
+                <p class="surprise-footer">
+                    Com amor, para você. 🌷
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================================= -->
+    <!-- DECORAÇÃO: PÉTALAS                -->
+    <!-- ================================= -->
+
+    <div class="falling-petals" id="falling-petals"></div>
+
+
+    <!-- Acessibilidade -->
+    <noscript>
+        <p>
+            Este presente precisa de JavaScript ativado
+            para exibir todas as animações.
+        </p>
+    </noscript>
+
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+
+</body>
+</html>
