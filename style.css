@@ -1,0 +1,1343 @@
+
+/* ==========================================
+   UM BUQUÊ PARA VOCÊ
+   VERSION 2.0 | ROMANTIC FLORAL DESIGN
+   ========================================== */
+
+:root {
+    --night: #090f20;
+    --night-light: #19233e;
+    --pink: #ed9fbd;
+    --pink-light: #ffdae8;
+    --pink-dark: #b95d83;
+    --gold: #e9c994;
+    --green: #526f54;
+    --green-light: #91a98a;
+    --white: #fff7fa;
+
+    --font-title: 'Cormorant Garamond', serif;
+    --font-script: 'Great Vibes', cursive;
+    --font-body: 'Montserrat', sans-serif;
+}
+
+/* RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: var(--night);
+    color: var(--white);
+    font-family: var(--font-body);
+}
+
+button,
+a {
+    font-family: inherit;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+/* ==========================================
+   BACKGROUND
+   ========================================== */
+
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 75%,
+            rgba(92, 77, 125, 0.28),
+            transparent 55%
+        ),
+        linear-gradient(
+            180deg,
+            #080d1b 0%,
+            #111a30 55%,
+            #202744 100%
+        );
+}
+
+.moon {
+    position: absolute;
+    width: 82px;
+    height: 82px;
+    top: 8%;
+    right: 12%;
+
+    border-radius: 50%;
+    background: #fff0d5;
+
+    box-shadow:
+        0 0 25px rgba(255, 240, 214, .4),
+        0 0 75px rgba(255, 220, 190, .18);
+
+    animation: moonGlow 5s ease-in-out infinite alternate;
+}
+
+.moon::after {
+    content: "";
+    position: absolute;
+    width: 82px;
+    height: 82px;
+    top: -10px;
+    left: 23px;
+    border-radius: 50%;
+    background: #111a30;
+    opacity: .12;
+}
+
+.stars,
+.particles {
+    position: absolute;
+    inset: 0;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 7px white;
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--pink-light);
+    box-shadow: 0 0 10px var(--pink);
+    animation: floatParticle 8s linear infinite;
+}
+
+/* ==========================================
+   MAIN LAYOUT
+   ========================================== */
+
+.main-container {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.screen {
+    position: absolute;
+    inset: 0;
+
+    min-height: 100vh;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 55px 22px;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(22px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease,
+        visibility 1s;
+}
+
+.screen.active {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* ==========================================
+   TYPOGRAPHY
+   ========================================== */
+
+.eyebrow {
+    display: block;
+    margin-bottom: 20px;
+
+    color: var(--gold);
+    text-align: center;
+
+    font-size: .65rem;
+    letter-spacing: 5px;
+    font-weight: 400;
+}
+
+h1,
+h2 {
+    font-family: var(--font-title);
+    font-weight: 400;
+}
+
+h1 {
+    font-size: clamp(3.2rem, 9vw, 6rem);
+    line-height: .95;
+    text-align: center;
+}
+
+h1 span {
+    display: block;
+    margin-top: 12px;
+
+    font-family: var(--font-script);
+    font-size: 1.25em;
+    color: var(--pink);
+}
+
+h2 {
+    font-size: clamp(2.1rem, 7vw, 3.5rem);
+    text-align: center;
+}
+
+p {
+    font-weight: 300;
+    line-height: 1.9;
+}
+
+/* ==========================================
+   INTRO
+   ========================================== */
+
+.intro-content {
+    max-width: 600px;
+    text-align: center;
+    animation: introAppear 2s ease both;
+}
+
+.intro-description {
+    max-width: 440px;
+    margin: 30px auto 35px;
+
+    color: rgba(255, 245, 248, .75);
+    font-size: .9rem;
+    line-height: 2.1;
+}
+
+.intro-footer {
+    display: block;
+    margin-top: 45px;
+
+    color: rgba(255, 255, 255, .4);
+    font-size: .65rem;
+    letter-spacing: 2px;
+}
+
+/* ==========================================
+   BUTTONS
+   ========================================== */
+
+.primary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    min-height: 54px;
+    padding: 15px 30px;
+
+    border-radius: 50px;
+
+    color: #402438;
+    background: linear-gradient(
+        135deg,
+        #ffe0eb,
+        #e99dbb
+    );
+
+    font-size: .76rem;
+    letter-spacing: 1px;
+
+    box-shadow: 0 5px 25px rgba(244, 169, 196, .16);
+
+    transition: .4s ease;
+}
+
+.primary-button span {
+    font-size: 1.2rem;
+}
+
+.primary-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 35px rgba(244, 169, 196, .35);
+}
+
+.primary-button:active {
+    transform: scale(.97);
+}
+
+.primary-button:disabled {
+    opacity: .5;
+    cursor: wait;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ==========================================
+   BOUQUET INTRODUCTION
+   ========================================== */
+
+.bouquet-screen {
+    text-align: center;
+    gap: 10px;
+}
+
+.bouquet-heading {
+    max-width: 600px;
+    margin-bottom: 10px;
+}
+
+.bouquet-heading p {
+    margin-top: 12px;
+    color: rgba(255, 245, 248, .65);
+    font-size: .82rem;
+}
+
+/* ==========================================
+   BOUQUET STRUCTURE
+   ========================================== */
+
+.bouquet-container {
+    position: relative;
+
+    width: min(100%, 460px);
+    height: 410px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    isolation: isolate;
+}
+
+.bouquet-glow {
+    position: absolute;
+    z-index: -1;
+
+    width: 310px;
+    height: 300px;
+    bottom: 20px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(238, 150, 188, .23),
+        transparent 70%
+    );
+
+    filter: blur(20px);
+    animation: glowBreath 4s ease-in-out infinite;
+}
+
+/* Camadas */
+
+.bouquet-stems {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.bouquet-leaves {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.bouquet-wrapper {
+    position: absolute;
+    inset: auto;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.bouquet-flowers {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.bouquet-ribbon {
+    position: absolute;
+    inset: auto;
+    z-index: 7;
+    pointer-events: none;
+}
+
+/* ==========================================
+   FLOWER BASE
+   ========================================== */
+
+.flower {
+    position: absolute;
+
+    width: var(--flower-size, 90px);
+    height: var(--flower-size, 90px);
+
+    left: var(--x, 50%);
+    top: var(--y, 20%);
+
+    transform:
+        translate(-50%, -50%)
+        rotate(var(--rotation, 0deg));
+
+    transform-origin: center center;
+
+    opacity: 0;
+
+    animation: flowerBloom 1.5s
+        cubic-bezier(.2, .8, .2, 1) forwards;
+
+    filter: drop-shadow(0 5px 8px rgba(0, 0, 0, .2));
+}
+
+.petal {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 30%;
+    height: 47%;
+
+    border-radius: 50% 50% 45% 45%;
+
+    transform-origin: 50% 100%;
+
+    background: linear-gradient(
+        145deg,
+        #fff0f5 0%,
+        #f5aec9 50%,
+        #d96f9b 100%
+    );
+
+    box-shadow:
+        inset -3px -5px 9px rgba(168, 67, 110, .15),
+        inset 3px 3px 8px rgba(255, 255, 255, .4);
+}
+
+.flower-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 15%;
+    height: 15%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        #fff0a8,
+        #e3b94f 70%,
+        #b88a35
+    );
+
+    box-shadow: 0 0 12px rgba(255, 222, 147, .6);
+}
+
+/* ==========================================
+   ORIENTAL LILIES
+   ========================================== */
+
+.flower.lily {
+    filter:
+        drop-shadow(0 5px 8px rgba(0, 0, 0, .15))
+        drop-shadow(0 0 12px rgba(245, 164, 195, .12));
+}
+
+.flower.lily .petal {
+    width: 24%;
+    height: 56%;
+
+    border-radius: 55% 55% 38% 38%;
+
+    background: linear-gradient(
+        180deg,
+        #fff8fc 0%,
+        #ffe0ec 28%,
+        #f4aecb 70%,
+        #d979a2 100%
+    );
+
+    box-shadow:
+        inset 0 5px 9px rgba(255, 255, 255, .65),
+        inset -4px -7px 9px rgba(172, 69, 116, .13),
+        0 2px 5px rgba(0, 0, 0, .08);
+}
+
+.flower.lily .petal::after {
+    content: "";
+    position: absolute;
+
+    top: 20%;
+    left: 50%;
+
+    width: 1px;
+    height: 50%;
+
+    transform: translateX(-50%);
+
+    background: rgba(255, 255, 255, .5);
+    border-radius: 50%;
+}
+
+.flower.lily .flower-center {
+    width: 13%;
+    height: 13%;
+
+    background: radial-gradient(
+        circle,
+        #fff2a9,
+        #e5b943 70%
+    );
+
+    box-shadow: 0 0 12px rgba(255, 222, 147, .7);
+}
+
+/* ==========================================
+   ROSES
+   ========================================== */
+
+.flower.rose .petal {
+    width: 37%;
+    height: 43%;
+
+    border-radius: 65% 65% 45% 45%;
+
+    background: linear-gradient(
+        145deg,
+        #ffe4ed,
+        #f2a1bf 55%,
+        #c85f8a
+    );
+
+    box-shadow:
+        inset -3px -4px 7px rgba(168, 67, 110, .17),
+        inset 2px 2px 5px rgba(255, 255, 255, .35);
+}
+
+.flower.rose .flower-center {
+    width: 23%;
+    height: 23%;
+
+    background: radial-gradient(
+        circle,
+        #d96c99,
+        #a94370
+    );
+
+    box-shadow: 0 0 5px rgba(185, 93, 131, .3);
+}
+
+/* ==========================================
+   BABY'S BREATH / MOSQUITINHOS
+   ========================================== */
+
+.baby-breath {
+    position: absolute;
+    z-index: 4;
+
+    left: var(--x, 50%);
+    top: var(--y, 50%);
+
+    width: var(--size, 12px);
+    height: var(--size, 12px);
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        #fff,
+        #f8e9f0
+    );
+
+    box-shadow:
+        0 0 7px rgba(255, 255, 255, .8),
+        0 0 15px rgba(255, 225, 238, .35);
+
+    opacity: 0;
+
+    animation: babyAppear 1s ease forwards;
+}
+
+.baby-stem {
+    position: absolute;
+
+    width: 2px;
+    height: var(--height, 25px);
+
+    left: 50%;
+    top: 50%;
+
+    background: #91a98a;
+    border-radius: 5px;
+
+    transform-origin: top center;
+}
+
+/* ==========================================
+   STEMS
+   ========================================== */
+
+.stem {
+    position: absolute;
+
+    width: 4px;
+    height: var(--stem-height, 190px);
+
+    left: var(--x, 50%);
+    bottom: 65px;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        90deg,
+        #294936,
+        #77956e,
+        #395b43
+    );
+
+    transform:
+        rotate(var(--rotation, 0deg))
+        scaleY(0);
+
+    transform-origin: bottom center;
+
+    opacity: 0;
+
+    box-shadow: 1px 0 3px rgba(0, 0, 0, .15);
+
+    animation: stemGrow 1.6s ease forwards;
+}
+
+/* ==========================================
+   LEAVES
+   ========================================== */
+
+.leaf {
+    position: absolute;
+
+    width: 38px;
+    height: 78px;
+
+    background: linear-gradient(
+        115deg,
+        #a5ba96,
+        #55785a 65%,
+        #345b43
+    );
+
+    border-radius: 0 100% 0 100%;
+
+    transform:
+        rotate(var(--rotation, 35deg))
+        scale(0);
+
+    transform-origin: center bottom;
+
+    opacity: 0;
+
+    animation: leafGrow 1.5s ease forwards;
+
+    filter: drop-shadow(2px 4px 3px rgba(0, 0, 0, .2));
+}
+
+.leaf::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 8%;
+
+    width: 1px;
+    height: 83%;
+
+    background: rgba(225, 241, 208, .45);
+
+    transform: rotate(-8deg);
+}
+
+/* ==========================================
+   BOUQUET WRAPPING PAPER
+   ========================================== */
+
+.bouquet-wrapper {
+    width: 230px;
+    height: 220px;
+
+    bottom: 8px;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    opacity: 0;
+
+    background: linear-gradient(
+        105deg,
+        #c9789c 0%,
+        #f4c5d8 25%,
+        #e8a7c1 60%,
+        #bd6e91 100%
+    );
+
+    clip-path: polygon(
+        4% 0,
+        96% 0,
+        76% 100%,
+        24% 100%
+    );
+
+    filter: drop-shadow(0 8px 12px rgba(0, 0, 0, .25));
+
+    animation: wrapperAppear 1.5s ease forwards;
+}
+
+.bouquet-wrapper::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        100deg,
+        rgba(255, 255, 255, .25),
+        transparent 35%,
+        rgba(130, 46, 83, .15)
+    );
+
+    clip-path: polygon(
+        50% 0,
+        100% 0,
+        76% 100%,
+        50% 100%
+    );
+}
+
+.bouquet-wrapper::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 35px;
+
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, .25),
+        transparent
+    );
+}
+
+/* ==========================================
+   RIBBON
+   ========================================== */
+
+.bouquet-ribbon {
+    left: 50%;
+    bottom: 80px;
+
+    width: 110px;
+    height: 35px;
+
+    transform: translateX(-50%) scale(0);
+
+    opacity: 0;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        180deg,
+        #f9c8db,
+        #bd668d,
+        #eaa1be
+    );
+
+    box-shadow:
+        0 4px 9px rgba(0, 0, 0, .2),
+        inset 0 3px 5px rgba(255, 255, 255, .35);
+
+    animation: ribbonAppear 1.2s ease forwards;
+}
+
+/* Laço de cetim */
+
+.bouquet-ribbon::before,
+.bouquet-ribbon::after {
+    content: "";
+
+    position: absolute;
+
+    top: -8px;
+
+    width: 42px;
+    height: 45px;
+
+    border: 3px solid #d987aa;
+
+    background: linear-gradient(
+        135deg,
+        #ffd9e7,
+        #d982a7
+    );
+
+    box-shadow: inset 0 3px 5px rgba(255, 255, 255, .4);
+}
+
+.bouquet-ribbon::before {
+    left: -28px;
+
+    border-radius: 80% 20% 70% 30%;
+
+    transform: rotate(25deg);
+}
+
+.bouquet-ribbon::after {
+    right: -28px;
+
+    border-radius: 20% 80% 30% 70%;
+
+    transform: rotate(-25deg);
+}
+
+/* ==========================================
+   BOUQUET CAPTION
+   ========================================== */
+
+.bouquet-caption {
+    margin: 15px 0 25px;
+
+    font-family: var(--font-script);
+    font-size: 1.8rem;
+
+    color: var(--pink-light);
+
+    opacity: 0;
+}
+
+/* ==========================================
+   LETTER
+   ========================================== */
+
+.letter-screen {
+    padding: 60px 22px;
+}
+
+.letter-container {
+    width: min(100%, 600px);
+
+    padding: 40px 35px;
+
+    border: 1px solid rgba(244, 169, 196, .2);
+    border-radius: 8px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(33, 38, 64, .9),
+        rgba(19, 25, 46, .96)
+    );
+
+    box-shadow:
+        0 20px 70px rgba(0, 0, 0, .3),
+        0 0 40px rgba(244, 169, 196, .05);
+
+    backdrop-filter: blur(15px);
+
+    text-align: center;
+}
+
+.letter-decoration {
+    margin: 20px 0;
+    font-size: 2rem;
+}
+
+.letter-container h2 {
+    margin-bottom: 25px;
+
+    font-family: var(--font-script);
+    font-size: 3.2rem;
+
+    color: var(--pink);
+}
+
+.letter-content {
+    text-align: left;
+
+    color: rgba(255, 245, 248, .85);
+
+    font-family: var(--font-title);
+    font-size: 1.25rem;
+    line-height: 1.9;
+}
+
+.letter-content p {
+    margin-bottom: 20px;
+}
+
+.letter-ending {
+    margin-top: 30px;
+    text-align: right;
+    font-style: italic;
+}
+
+.letter-ending span {
+    display: block;
+
+    font-family: var(--font-script);
+    font-size: 2rem;
+
+    color: var(--pink);
+}
+
+.letter-divider {
+    margin: 30px auto;
+    color: var(--gold);
+    font-size: 1.3rem;
+}
+
+/* ==========================================
+   SECOND SURPRISE
+   ========================================== */
+
+.surprise-content {
+    width: min(100%, 520px);
+    padding: 35px 20px;
+    text-align: center;
+}
+
+.surprise-flower {
+    margin: 15px 0 25px;
+    font-size: 3rem;
+    animation: flowerFloat 4s ease-in-out infinite;
+}
+
+.surprise-content h2 span {
+    display: block;
+
+    font-family: var(--font-script);
+    font-size: 1.4em;
+
+    color: var(--pink);
+}
+
+.surprise-content > p {
+    max-width: 430px;
+    margin: 20px auto;
+
+    color: rgba(255, 245, 248, .75);
+    font-size: .85rem;
+}
+
+.surprise-divider {
+    margin: 35px 0;
+    color: var(--pink);
+    font-size: 1.5rem;
+}
+
+.surprise-label {
+    display: block;
+    margin-bottom: 20px;
+
+    color: var(--gold);
+    font-size: .65rem;
+    letter-spacing: 4px;
+}
+
+.surprise-link {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    padding: 17px 30px;
+
+    border: 1px solid rgba(255, 213, 228, .5);
+    border-radius: 50px;
+
+    color: var(--pink-light);
+    background: rgba(244, 169, 196, .08);
+
+    font-size: .8rem;
+    text-decoration: none;
+    letter-spacing: 1px;
+
+    transition: .4s ease;
+}
+
+.surprise-link:hover {
+    background: rgba(244, 169, 196, .2);
+    border-color: var(--pink);
+    box-shadow: 0 0 30px rgba(244, 169, 196, .2);
+    transform: translateY(-4px);
+}
+
+.surprise-footer {
+    margin-top: 45px !important;
+
+    font-family: var(--font-script);
+    font-size: 1.8rem !important;
+
+    color: var(--pink) !important;
+}
+
+/* ==========================================
+   FALLING PETALS
+   ========================================== */
+
+.falling-petals {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.falling-petal {
+    position: absolute;
+    top: -30px;
+
+    width: 12px;
+    height: 18px;
+
+    border-radius: 100% 0 100% 0;
+
+    background: linear-gradient(
+        135deg,
+        #ffe0eb,
+        #e98daf
+    );
+
+    opacity: 0;
+
+    animation: petalFall var(--duration, 8s) linear forwards;
+}
+
+/* ==========================================
+   ANIMATIONS
+   ========================================== */
+
+@keyframes moonGlow {
+    from {
+        box-shadow:
+            0 0 25px rgba(255, 240, 214, .3),
+            0 0 60px rgba(255, 220, 190, .1);
+    }
+
+    to {
+        box-shadow:
+            0 0 35px rgba(255, 240, 214, .55),
+            0 0 100px rgba(255, 220, 190, .25);
+    }
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: .25;
+        transform: scale(.7);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+@keyframes floatParticle {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    30% {
+        opacity: .8;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-100vh);
+    }
+}
+
+@keyframes introAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glowBreath {
+    0%, 100% {
+        opacity: .5;
+        transform: scale(.9);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+}
+
+@keyframes flowerBloom {
+    0% {
+        opacity: 0;
+        transform:
+            translate(-50%, -50%)
+            scale(0)
+            rotate(var(--rotation, 0deg));
+    }
+
+    70% {
+        transform:
+            translate(-50%, -50%)
+            scale(1.12)
+            rotate(var(--rotation, 0deg));
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            translate(-50%, -50%)
+            scale(1)
+            rotate(var(--rotation, 0deg));
+    }
+}
+
+@keyframes stemGrow {
+    from {
+        opacity: 0;
+        transform:
+            rotate(var(--rotation, 0deg))
+            scaleY(0);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            rotate(var(--rotation, 0deg))
+            scaleY(1);
+    }
+}
+
+@keyframes leafGrow {
+    from {
+        opacity: 0;
+        transform:
+            rotate(var(--rotation, 35deg))
+            scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            rotate(var(--rotation, 35deg))
+            scale(1);
+    }
+}
+
+@keyframes babyAppear {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes wrapperAppear {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes ribbonAppear {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+@keyframes flowerFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes petalFall {
+    0% {
+        opacity: 0;
+        transform: translate(0, -10px) rotate(0deg);
+    }
+
+    10% {
+        opacity: .9;
+    }
+
+    90% {
+        opacity: .7;
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translate(var(--drift, 80px), 110vh)
+            rotate(650deg);
+    }
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 600px) {
+
+    .moon {
+        width: 55px;
+        height: 55px;
+        top: 7%;
+        right: 9%;
+    }
+
+    .moon::after {
+        width: 55px;
+        height: 55px;
+    }
+
+    .screen {
+        padding: 40px 18px;
+    }
+
+    .intro-description {
+        font-size: .82rem;
+    }
+
+    .bouquet-container {
+        height: 355px;
+        max-width: 370px;
+    }
+
+    .bouquet-wrapper {
+        width: 205px;
+        height: 190px;
+    }
+
+    .bouquet-ribbon {
+        bottom: 75px;
+        transform: translateX(-50%) scale(0);
+    }
+
+    .flower {
+        width: var(--flower-size-mobile, 75px);
+        height: var(--flower-size-mobile, 75px);
+    }
+
+    .letter-container {
+        padding: 30px 22px;
+    }
+
+    .letter-content {
+        font-size: 1.12rem;
+    }
+
+    .letter-container h2 {
+        font-size: 2.8rem;
+    }
+
+    .primary-button {
+        padding: 14px 23px;
+        font-size: .7rem;
+    }
+
+    .surprise-link {
+        padding: 15px 22px;
+        font-size: .7rem;
+    }
+
+    .eyebrow {
+        letter-spacing: 3px;
+    }
+}
+
+/* ==========================================
+   ACCESSIBILITY
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+}
